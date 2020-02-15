@@ -59,6 +59,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)src\;$(ProjectDir)extern\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -74,6 +75,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)src\;$(ProjectDir)extern\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -83,7 +85,93 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\Application.cpp" />
     <ClCompile Include="src\Core\main.cpp" />
+    <ClCompile Include="src\Logger\Logger.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="extern\spdlog\async.h" />
+    <ClInclude Include="extern\spdlog\async_logger-inl.h" />
+    <ClInclude Include="extern\spdlog\async_logger.h" />
+    <ClInclude Include="extern\spdlog\common-inl.h" />
+    <ClInclude Include="extern\spdlog\common.h" />
+    <ClInclude Include="extern\spdlog\details\backtracer-inl.h" />
+    <ClInclude Include="extern\spdlog\details\backtracer.h" />
+    <ClInclude Include="extern\spdlog\details\circular_q.h" />
+    <ClInclude Include="extern\spdlog\details\console_globals.h" />
+    <ClInclude Include="extern\spdlog\details\file_helper-inl.h" />
+    <ClInclude Include="extern\spdlog\details\file_helper.h" />
+    <ClInclude Include="extern\spdlog\details\fmt_helper.h" />
+    <ClInclude Include="extern\spdlog\details\log_msg-inl.h" />
+    <ClInclude Include="extern\spdlog\details\log_msg.h" />
+    <ClInclude Include="extern\spdlog\details\log_msg_buffer-inl.h" />
+    <ClInclude Include="extern\spdlog\details\log_msg_buffer.h" />
+    <ClInclude Include="extern\spdlog\details\mpmc_blocking_q.h" />
+    <ClInclude Include="extern\spdlog\details\null_mutex.h" />
+    <ClInclude Include="extern\spdlog\details\os-inl.h" />
+    <ClInclude Include="extern\spdlog\details\os.h" />
+    <ClInclude Include="extern\spdlog\details\pattern_formatter-inl.h" />
+    <ClInclude Include="extern\spdlog\details\pattern_formatter.h" />
+    <ClInclude Include="extern\spdlog\details\periodic_worker-inl.h" />
+    <ClInclude Include="extern\spdlog\details\periodic_worker.h" />
+    <ClInclude Include="extern\spdlog\details\registry-inl.h" />
+    <ClInclude Include="extern\spdlog\details\registry.h" />
+    <ClInclude Include="extern\spdlog\details\synchronous_factory.h" />
+    <ClInclude Include="extern\spdlog\details\thread_pool-inl.h" />
+    <ClInclude Include="extern\spdlog\details\thread_pool.h" />
+    <ClInclude Include="extern\spdlog\fmt\bin_to_hex.h" />
+    <ClInclude Include="extern\spdlog\fmt\bundled\chrono.h" />
+    <ClInclude Include="extern\spdlog\fmt\bundled\color.h" />
+    <ClInclude Include="extern\spdlog\fmt\bundled\compile.h" />
+    <ClInclude Include="extern\spdlog\fmt\bundled\core.h" />
+    <ClInclude Include="extern\spdlog\fmt\bundled\format-inl.h" />
+    <ClInclude Include="extern\spdlog\fmt\bundled\format.h" />
+    <ClInclude Include="extern\spdlog\fmt\bundled\locale.h" />
+    <ClInclude Include="extern\spdlog\fmt\bundled\ostream.h" />
+    <ClInclude Include="extern\spdlog\fmt\bundled\posix.h" />
+    <ClInclude Include="extern\spdlog\fmt\bundled\printf.h" />
+    <ClInclude Include="extern\spdlog\fmt\bundled\ranges.h" />
+    <ClInclude Include="extern\spdlog\fmt\fmt.h" />
+    <ClInclude Include="extern\spdlog\fmt\ostr.h" />
+    <ClInclude Include="extern\spdlog\formatter.h" />
+    <ClInclude Include="extern\spdlog\logger-inl.h" />
+    <ClInclude Include="extern\spdlog\logger.h" />
+    <ClInclude Include="extern\spdlog\sinks\android_sink.h" />
+    <ClInclude Include="extern\spdlog\sinks\ansicolor_sink-inl.h" />
+    <ClInclude Include="extern\spdlog\sinks\ansicolor_sink.h" />
+    <ClInclude Include="extern\spdlog\sinks\base_sink-inl.h" />
+    <ClInclude Include="extern\spdlog\sinks\base_sink.h" />
+    <ClInclude Include="extern\spdlog\sinks\basic_file_sink-inl.h" />
+    <ClInclude Include="extern\spdlog\sinks\basic_file_sink.h" />
+    <ClInclude Include="extern\spdlog\sinks\daily_file_sink.h" />
+    <ClInclude Include="extern\spdlog\sinks\dist_sink.h" />
+    <ClInclude Include="extern\spdlog\sinks\dup_filter_sink.h" />
+    <ClInclude Include="extern\spdlog\sinks\msvc_sink.h" />
+    <ClInclude Include="extern\spdlog\sinks\null_sink.h" />
+    <ClInclude Include="extern\spdlog\sinks\ostream_sink.h" />
+    <ClInclude Include="extern\spdlog\sinks\ringbuffer_sink.h" />
+    <ClInclude Include="extern\spdlog\sinks\rotating_file_sink-inl.h" />
+    <ClInclude Include="extern\spdlog\sinks\rotating_file_sink.h" />
+    <ClInclude Include="extern\spdlog\sinks\sink-inl.h" />
+    <ClInclude Include="extern\spdlog\sinks\sink.h" />
+    <ClInclude Include="extern\spdlog\sinks\stdout_color_sinks-inl.h" />
+    <ClInclude Include="extern\spdlog\sinks\stdout_color_sinks.h" />
+    <ClInclude Include="extern\spdlog\sinks\stdout_sinks-inl.h" />
+    <ClInclude Include="extern\spdlog\sinks\stdout_sinks.h" />
+    <ClInclude Include="extern\spdlog\sinks\syslog_sink.h" />
+    <ClInclude Include="extern\spdlog\sinks\systemd_sink.h" />
+    <ClInclude Include="extern\spdlog\sinks\wincolor_sink-inl.h" />
+    <ClInclude Include="extern\spdlog\sinks\wincolor_sink.h" />
+    <ClInclude Include="extern\spdlog\spdlog-inl.h" />
+    <ClInclude Include="extern\spdlog\spdlog.h" />
+    <ClInclude Include="extern\spdlog\tweakme.h" />
+    <ClInclude Include="extern\spdlog\version.h" />
+    <ClInclude Include="src\Core\Application.h" />
+    <ClInclude Include="src\Logger\Logger.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="extern\spdlog\fmt\bundled\LICENSE.rst" />
+    <None Include="extern\spdlog\LICENSE" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,13 +1,287 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Core">
+    <Filter Include="src">
+      <UniqueIdentifier>{0985ad43-85ec-41bf-ae42-b9644bb32933}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Core">
       <UniqueIdentifier>{4505e00f-55a1-45da-b6d9-eccaf890dc0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extern">
+      <UniqueIdentifier>{f704652c-c550-478f-8b0e-0d7b8dee24f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extern\spdlog">
+      <UniqueIdentifier>{46b5e1c3-d6a3-443e-9429-480214c9b71e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extern\spdlog\details">
+      <UniqueIdentifier>{e014a544-dd48-4ebc-97bf-045c864e4a21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extern\spdlog\fmt">
+      <UniqueIdentifier>{7024f926-207c-4935-8e00-1ba65ff49205}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extern\spdlog\fmt\bundled">
+      <UniqueIdentifier>{a525ea99-a623-43fd-ad76-e2fcf3701ff8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extern\spdlog\sinks">
+      <UniqueIdentifier>{7036c3f8-a029-4ed5-b461-5630196c9886}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Logger">
+      <UniqueIdentifier>{000b2131-b935-488d-999f-2fcdddababdc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\main.cpp">
-      <Filter>Core</Filter>
+      <Filter>src\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Logger\Logger.cpp">
+      <Filter>src\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Application.cpp">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="extern\spdlog\async.h">
+      <Filter>extern\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\async_logger.h">
+      <Filter>extern\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\async_logger-inl.h">
+      <Filter>extern\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\common.h">
+      <Filter>extern\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\common-inl.h">
+      <Filter>extern\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\formatter.h">
+      <Filter>extern\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\logger.h">
+      <Filter>extern\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\logger-inl.h">
+      <Filter>extern\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\spdlog.h">
+      <Filter>extern\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\spdlog-inl.h">
+      <Filter>extern\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\tweakme.h">
+      <Filter>extern\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\version.h">
+      <Filter>extern\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\basic_file_sink-inl.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\daily_file_sink.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\dist_sink.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\dup_filter_sink.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\msvc_sink.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\null_sink.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\ostream_sink.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\ringbuffer_sink.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\rotating_file_sink.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\rotating_file_sink-inl.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\sink.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\sink-inl.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\stdout_color_sinks.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\stdout_color_sinks-inl.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\stdout_sinks.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\stdout_sinks-inl.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\syslog_sink.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\systemd_sink.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\wincolor_sink.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\wincolor_sink-inl.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\android_sink.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\ansicolor_sink.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\ansicolor_sink-inl.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\base_sink.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\base_sink-inl.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\sinks\basic_file_sink.h">
+      <Filter>extern\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\fmt\bin_to_hex.h">
+      <Filter>extern\spdlog\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\fmt\fmt.h">
+      <Filter>extern\spdlog\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\fmt\ostr.h">
+      <Filter>extern\spdlog\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\fmt\bundled\format.h">
+      <Filter>extern\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\fmt\bundled\format-inl.h">
+      <Filter>extern\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\fmt\bundled\locale.h">
+      <Filter>extern\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\fmt\bundled\ostream.h">
+      <Filter>extern\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\fmt\bundled\posix.h">
+      <Filter>extern\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\fmt\bundled\printf.h">
+      <Filter>extern\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\fmt\bundled\ranges.h">
+      <Filter>extern\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\fmt\bundled\chrono.h">
+      <Filter>extern\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\fmt\bundled\color.h">
+      <Filter>extern\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\fmt\bundled\compile.h">
+      <Filter>extern\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\fmt\bundled\core.h">
+      <Filter>extern\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\file_helper-inl.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\fmt_helper.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\log_msg.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\log_msg_buffer.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\log_msg_buffer-inl.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\log_msg-inl.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\mpmc_blocking_q.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\null_mutex.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\os.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\os-inl.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\pattern_formatter.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\pattern_formatter-inl.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\periodic_worker.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\periodic_worker-inl.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\registry.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\registry-inl.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\synchronous_factory.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\thread_pool.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\thread_pool-inl.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\backtracer.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\backtracer-inl.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\circular_q.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\console_globals.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\spdlog\details\file_helper.h">
+      <Filter>extern\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Logger\Logger.h">
+      <Filter>src\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Application.h">
+      <Filter>src\Core</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="extern\spdlog\LICENSE">
+      <Filter>extern\spdlog</Filter>
+    </None>
+    <None Include="extern\spdlog\fmt\bundled\LICENSE.rst">
+      <Filter>extern\spdlog\fmt\bundled</Filter>
+    </None>
   </ItemGroup>
 </Project>
