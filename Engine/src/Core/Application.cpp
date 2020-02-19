@@ -1,5 +1,9 @@
+#include "precomp.h"
 #include "Application.h"
-#include "Logger/Logger.h"
+#include "Render/RenderSystem.h"
+#include "Render/Renderer.h"
+#include "Render/Window.h"
+#include "Render/WindowData.h"
 
 namespace Engine {
 
@@ -7,15 +11,17 @@ namespace Engine {
     {
         LOG_INFO("Initializing application");
 
-        // Main Renderer initialize
-
-        // Window initialize
+        // Render system initialize
+        m_RenderSystem = std::make_unique<RenderSystem>();
+        if (!m_RenderSystem->Init(m_WindowData))
+        {
+            LOG_CRITICAL("Failed to initialize RenderSystem");
+            return false;
+        }
 
         // InputManager initialize
 
         // Entity Manager initialize
-
-        // Render system initialize
 
         // Camera Controller initialize
 
@@ -27,6 +33,9 @@ namespace Engine {
     bool Application::Shutdown()
     {
         LOG_INFO("Shutting down application");
+
+        m_RenderSystem->Shutdown();
+        m_RenderSystem.reset();
 
         return true;
     }
@@ -50,6 +59,12 @@ namespace Engine {
     void Application::Update(float dt)
     {
         // Update all systems
+        m_RenderSystem->Update(dt);
+    }
+
+    Engine::Application* CreateApplication()
+    {
+        return new Engine::Application();
     }
 
 }

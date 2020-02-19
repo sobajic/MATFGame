@@ -1,17 +1,32 @@
-#include "Logger/Logger.h"
+#include "precomp.h"
 #include "Core/Application.h"
+#include "Render/RenderSystem.h"
+#include "Render/Renderer.h"
 
 int main(int argc, char* args[])
 {
     Engine::Logger::Init();
     LOG_INFO("Logger initialized!");
 
-
-    // TODO Create Application and init
+    auto app = Engine::CreateApplication();
     
-    // TODO Run Application
+    bool success = app->Init();
+    if (!success)
+    {
+        LOG_CRITICAL("Failed to initialize the application!");
+        return 1;
+    }
 
-    // TODO Exit properly
+    int retval = app->Run();
 
-    return 0;
+    success = app->Shutdown();
+    if (!success)
+    {
+        LOG_CRITICAL("Failed to uninitialize the application!");
+        return 2;
+    }
+
+    delete app;
+
+    return retval;
 }

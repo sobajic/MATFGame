@@ -1,3 +1,4 @@
+#include "precomp.h"
 #include "Logger.h"
 #include <spdlog/sinks/msvc_sink.h>
 #include <spdlog/sinks/basic_file_sink.h>

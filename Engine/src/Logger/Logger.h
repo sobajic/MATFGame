@@ -23,28 +23,28 @@ namespace Engine {
 #define LOG_CRITICAL(...) \
     do \
     { \
-         \
+         ::Engine::Logger::GetLogger().critical(__VA_ARGS__); \
     } \
     while (0)
 
 #define LOG_ERROR(...) \
     do \
     { \
-         \
+         ::Engine::Logger::GetLogger().error(__VA_ARGS__); \
     } \
     while (0)
 
 #define LOG_WARNING(...) \
     do \
     { \
-         \
+         ::Engine::Logger::GetLogger().warn(__VA_ARGS__); \
     } \
     while (0)
 
 #define LOG_INFO(...) \
     do \
     { \
-         \
+         ::Engine::Logger::GetLogger().info(__VA_ARGS__); \
     } \
     while (0)
 
@@ -53,13 +53,13 @@ namespace Engine {
     { \
         if(!(x)) \
         { \
-             \
+            ::Engine::Logger::GetLogger().critical(__VA_ARGS__); \
             __debugbreak(); \
         } \
     } \
     while (0)
 
-#else  // NDEBUG
+#else  // _DEBUG
 
 // These are the release mode definitions for the macros above.
 #define LOG_CRITICAL(...)

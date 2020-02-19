@@ -28,6 +28,9 @@
     <Filter Include="src\Logger">
       <UniqueIdentifier>{000b2131-b935-488d-999f-2fcdddababdc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Render">
+      <UniqueIdentifier>{d74c4e72-958c-4c8d-9c71-c65cdb0634e2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\main.cpp">
@@ -38,6 +41,21 @@
     </ClCompile>
     <ClCompile Include="src\Core\Application.cpp">
       <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Render\RenderSystem.cpp">
+      <Filter>src\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Render\Renderer.cpp">
+      <Filter>src\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Render\Window.cpp">
+      <Filter>src\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="precomp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Render\Texture.cpp">
+      <Filter>src\Render</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -275,6 +293,24 @@
     <ClInclude Include="src\Core\Application.h">
       <Filter>src\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Render\RenderSystem.h">
+      <Filter>src\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Render\Renderer.h">
+      <Filter>src\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Render\Window.h">
+      <Filter>src\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Render\WindowData.h">
+      <Filter>src\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="precomp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Render\Texture.h">
+      <Filter>src\Render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="extern\spdlog\LICENSE">
@@ -283,5 +319,6 @@
     <None Include="extern\spdlog\fmt\bundled\LICENSE.rst">
       <Filter>extern\spdlog\fmt\bundled</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
