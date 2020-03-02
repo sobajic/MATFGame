@@ -12,8 +12,20 @@ namespace Engine
         m_WindowData = windowData_;
         ASSERT(m_WindowData.m_Width > 0 && m_WindowData.m_Height > 0, "Window size must be greater than zero");
 
-        // TODO: Create SDL_Window
-        // m_NativeWindowHandle = 
+        m_NativeWindowHandle = SDL_CreateWindow(
+            m_WindowData.m_Title.c_str(),
+            SDL_WINDOWPOS_CENTERED,
+            SDL_WINDOWPOS_CENTERED,
+            m_WindowData.m_Width,
+            m_WindowData.m_Height,
+            0
+        );
+
+        if (m_NativeWindowHandle == nullptr)
+        {
+            LOG_CRITICAL("Unable to create a window. SDL Error: {}", SDL_GetError());
+            return false;
+        }
 
         LOG_INFO("Window successfully initialized");
         return true;

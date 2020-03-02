@@ -13,12 +13,28 @@ namespace Engine
         LOG_INFO("Initializing Renderer");
 
 
-        // TODO: Create window and Initialize
+        m_Window = std::make_unique<Window>();
 
-        // TODO: Create SDL_Renderer
-        // m_NativeRenderer = 
+        if (!m_Window->Init(windowData_))
+        {
+            LOG_CRITICAL("Unable to create a Window.");
+        }
+
+        m_NativeRenderer = SDL_CreateRenderer(
+            m_Window->GetNativeWindowHandle(),
+            -1,
+            SDL_RENDERER_ACCELERATED);
+
+        if (m_NativeRenderer == nullptr)
+        {
+            LOG_CRITICAL("Unable to create a renderer. SDL error: {}", SDL_GetError());
+            return false;
+        }
 
         SetBackgroundColor(100, 150, 236, SDL_ALPHA_OPAQUE);
+
+        // TODO: Remove after testing
+        m_helloWorldTexture.LoadTexture(this, "hello_world.jpg");
 
         return true;
     }
@@ -41,9 +57,9 @@ namespace Engine
 
     void Renderer::DrawImage(/* Some image parameters IDK */)
     {
-        // TODO: Draw image
-
-        // hint, use SDL_RenderCopy or SDL_RenderCopyEx
+        // TODO: Remove after testing
+        SDL_Rect dst{ 300, 200, 200, 200 };
+        SDL_RenderCopy(m_NativeRenderer, m_helloWorldTexture.m_Texture, NULL, &dst);
     }
 
     void Renderer::SetBackgroundColor(unsigned char bgR_, unsigned char bgG_, unsigned char bgB_, unsigned char bgA_)
