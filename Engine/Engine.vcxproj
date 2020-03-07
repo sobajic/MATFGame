@@ -104,6 +104,7 @@
     </ClCompile>
     <ClCompile Include="src\Core\Application.cpp" />
     <ClCompile Include="src\Core\main.cpp" />
+    <ClCompile Include="src\Input\InputManager.cpp" />
     <ClCompile Include="src\Logger\Logger.cpp" />
     <ClCompile Include="src\Render\Renderer.cpp" />
     <ClCompile Include="src\Render\RenderSystem.cpp" />
@@ -189,6 +190,8 @@
     <ClInclude Include="extern\spdlog\version.h" />
     <ClInclude Include="precomp.h" />
     <ClInclude Include="src\Core\Application.h" />
+    <ClInclude Include="src\Input\InputAction.h" />
+    <ClInclude Include="src\Input\InputManager.h" />
     <ClInclude Include="src\Logger\Logger.h" />
     <ClInclude Include="src\Render\Renderer.h" />
     <ClInclude Include="src\Render\RenderSystem.h" />

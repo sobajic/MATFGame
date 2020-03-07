@@ -50,7 +50,7 @@ namespace Engine
 
     void RenderSystem::Update(float dt_/*, EntityManager* entityManager*/)
     {
-        LOG_INFO("RenderSystem::Update");
+        // LOG_INFO("RenderSystem::Update"); TODO: Uncomment
 
         m_Renderer->BeginScene();
 

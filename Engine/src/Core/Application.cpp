@@ -1,5 +1,6 @@
 #include "precomp.h"
 #include "Application.h"
+#include "Input/InputManager.h"
 #include "Render/RenderSystem.h"
 #include "Render/Renderer.h"
 #include "Render/Window.h"
@@ -20,6 +21,12 @@ namespace Engine {
         }
 
         // InputManager initialize
+        m_InputManager = std::make_unique<InputManager>();
+        if (!m_InputManager->Init())
+        {
+            LOG_CRITICAL("Failed to initialize InputManager");
+            return false;
+        }
 
         // Entity Manager initialize
 
@@ -45,8 +52,11 @@ namespace Engine {
         m_Running = true;
 
         // Main loop
+        // TODO: Replace with SDL event polling
         while (true)
         {
+            // TODO: Quit gracefully on SDL_Quit event
+
             float argumentForUpdate = 1.0f; // TODO: Remove
             Update(argumentForUpdate);
         }
@@ -60,6 +70,7 @@ namespace Engine {
     {
         // Update all systems
         m_RenderSystem->Update(dt);
+        m_InputManager->Update(dt);
     }
 
     Engine::Application* CreateApplication()

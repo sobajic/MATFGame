@@ -31,6 +31,9 @@
     <Filter Include="src\Render">
       <UniqueIdentifier>{d74c4e72-958c-4c8d-9c71-c65cdb0634e2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Input">
+      <UniqueIdentifier>{e72f6db0-1fda-473d-bfae-a2ec1a137583}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\main.cpp">
@@ -56,6 +59,9 @@
     </ClCompile>
     <ClCompile Include="src\Render\Texture.cpp">
       <Filter>src\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\InputManager.cpp">
+      <Filter>src\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -310,6 +316,12 @@
     </ClInclude>
     <ClInclude Include="src\Render\Texture.h">
       <Filter>src\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\InputManager.h">
+      <Filter>src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\InputAction.h">
+      <Filter>src\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
