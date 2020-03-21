@@ -40,10 +40,10 @@ namespace Engine {
         InputActionCount
     };
 
-    // TODO: For later
     struct InputAction
     {
         EInputAction m_Action{ EInputAction::InputActionCount };
+        EInputActionState m_ActionTriggerState{ EInputActionState::Pressed };
         bool m_Active{};
     };
 }

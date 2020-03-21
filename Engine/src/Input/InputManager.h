@@ -5,6 +5,8 @@ using KeyboardButton = int;
 
 namespace Engine
 {
+    class EntityManager;
+
     class InputManager
     {
     public:
@@ -14,11 +16,7 @@ namespace Engine
 
     private:
         void ProcessInput();
-        bool IsButtonJustPressed(EInputAction _eAction) const;
-        bool IsButtonPressed(EInputAction _eAction) const;
-        bool IsButtonReleased(EInputAction _eAction) const;
-
-    private:
+        bool IsButtonActionActive(EInputAction _eAction, EInputActionState _eState) const;
         void InitKeybinds();
 
         std::unordered_map<EInputAction, KeyboardButton> m_InputActions{ };

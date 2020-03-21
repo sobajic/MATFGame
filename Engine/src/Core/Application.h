@@ -6,6 +6,7 @@ namespace Engine {
 
     class RenderSystem;
     class InputManager;
+    class EntityManager;
 
     class Application
     {
@@ -27,9 +28,9 @@ namespace Engine {
         WindowData m_WindowData{};
         std::unique_ptr<RenderSystem> m_RenderSystem;
         std::unique_ptr<InputManager> m_InputManager;
+        std::unique_ptr<EntityManager> m_EntityManager;
     };
 
     // To be defined in the game
     Application* CreateApplication();
-
 }

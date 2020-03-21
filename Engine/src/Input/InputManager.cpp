@@ -20,20 +20,27 @@ namespace Engine
 
     void InputManager::ProcessInput()
     {
-        // TODO: Implement
         for (auto& [action, key] : m_InputActions)
         {
             bool bIsPressed = KeyDown(key);
             switch (m_InputActionStates[action])
             {
             case EInputActionState::None:
-
+            {
+                m_InputActionStates[action] = bIsPressed ? EInputActionState::JustPressed : EInputActionState::None;
+                break;
+            }
             case EInputActionState::JustPressed:
-
             case EInputActionState::Pressed:
-
+            {
+                m_InputActionStates[action] = bIsPressed ? EInputActionState::Pressed : EInputActionState::Released;
+                break;
+            }
             case EInputActionState::Released:
-
+            {
+                m_InputActionStates[action] = bIsPressed ? EInputActionState::JustPressed : EInputActionState::None;
+                break;
+            }
             default:
                 ASSERT("Unknown EInputActionState {0}", m_InputActionStates[action]);
                 m_InputActionStates[action] = EInputActionState::None;
@@ -55,22 +62,10 @@ namespace Engine
         m_InputActionStates.clear();
     }
 
-    bool InputManager::IsButtonJustPressed(EInputAction _eAction) const
+    bool InputManager::IsButtonActionActive(EInputAction _eAction, EInputActionState _eState) const
     {
         ASSERT(m_InputActionStates.find(_eAction) != m_InputActionStates.end(), "Unknown input action");
-        return m_InputActionStates.at(_eAction) == EInputActionState::JustPressed;
-    }
-
-    bool InputManager::IsButtonPressed(EInputAction _eAction) const
-    {
-        ASSERT(m_InputActionStates.find(_eAction) != m_InputActionStates.end(), "Unknown input action");
-        return m_InputActionStates.at(_eAction) == EInputActionState::Pressed;
-    }
-
-    bool InputManager::IsButtonReleased(EInputAction _eAction) const
-    {
-        ASSERT(m_InputActionStates.find(_eAction) != m_InputActionStates.end(), "Unknown input action");
-        return m_InputActionStates.at(_eAction) == EInputActionState::Released;
+        return m_InputActionStates.at(_eAction) == _eState;
     }
 
     void InputManager::InitKeybinds()

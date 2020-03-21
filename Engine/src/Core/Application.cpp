@@ -1,5 +1,6 @@
 #include "precomp.h"
 #include "Application.h"
+#include "ECS/EntityManager.h"
 #include "Input/InputManager.h"
 #include "Render/RenderSystem.h"
 #include "Render/Renderer.h"
@@ -29,7 +30,12 @@ namespace Engine {
         }
 
         // Entity Manager initialize
-
+        m_EntityManager = std::make_unique<EntityManager>();
+        if (!m_EntityManager->Init())
+        {
+            LOG_CRITICAL("Failed to initialize EntityManager");
+            return false;
+        }
         // Camera Controller initialize
 
         // Physics system initialize
@@ -52,10 +58,16 @@ namespace Engine {
         m_Running = true;
 
         // Main loop
-        // TODO: Replace with SDL event polling
-        while (true)
+        SDL_Event event{ };
+        while (m_Running)
         {
-            // TODO: Quit gracefully on SDL_Quit event
+            while (SDL_PollEvent(&event) != 0)
+            {
+                if (event.type == SDL_QUIT)
+                {
+                    m_Running = false;
+                }
+            }
 
             float argumentForUpdate = 1.0f; // TODO: Remove
             Update(argumentForUpdate);
