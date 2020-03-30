@@ -72,6 +72,8 @@ namespace Engine
     struct SpriteComponent : public Component
     {
         Texture* m_Image{};
+        bool m_FlipHorizontal{ false };
+        bool m_FlipVertical{ false };
     };
 
     struct PlayerComponent : public Component

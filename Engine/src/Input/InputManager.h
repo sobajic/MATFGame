@@ -11,8 +11,10 @@ namespace Engine
     {
     public:
         bool Init();
-        void Update(float dt);
+        void Update(float dt, EntityManager* entityManager);
         void Shutdown();
+
+        InputManager() = default;
 
     private:
         void ProcessInput();
@@ -21,5 +23,8 @@ namespace Engine
 
         std::unordered_map<EInputAction, KeyboardButton> m_InputActions{ };
         std::unordered_map<EInputAction, EInputActionState> m_InputActionStates{ };
+
+        InputManager(const InputManager& other) = delete;
+        InputManager& operator=(InputManager& other) = delete;
     };
 }

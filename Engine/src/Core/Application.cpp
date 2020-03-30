@@ -4,14 +4,21 @@
 #include "Input/InputManager.h"
 #include "Render/RenderSystem.h"
 #include "Render/Renderer.h"
+#include "Render/Texture.h"
 #include "Render/Window.h"
 #include "Render/WindowData.h"
+#include "Render/TextureManager.h"
+#include "Physics/PhysicsSystem.h"
+
+#include <SDL.h>
 
 namespace Engine {
 
     bool Application::Init()
     {
         LOG_INFO("Initializing application");
+
+        GameSpecificWindowData();
 
         // Render system initialize
         m_RenderSystem = std::make_unique<RenderSystem>();
@@ -21,7 +28,10 @@ namespace Engine {
             return false;
         }
 
-        // InputManager initialize
+        // Texture Manager create
+        m_TextureManager = std::make_unique<TextureManager>();
+
+        // Input Manager initialize
         m_InputManager = std::make_unique<InputManager>();
         if (!m_InputManager->Init())
         {
@@ -36,9 +46,20 @@ namespace Engine {
             LOG_CRITICAL("Failed to initialize EntityManager");
             return false;
         }
-        // Camera Controller initialize
 
         // Physics system initialize
+        m_PhysicsSystem = std::make_unique<PhysicsSystem>();
+        if (!m_PhysicsSystem->Init())
+        {
+            LOG_CRITICAL("Failed to initialize PhysicsSystem");
+            return false;
+        }
+
+        if (GameSpecificInit() != true)
+        {
+            LOG_CRITICAL("Error initializing game specific systems!");
+            return false;
+        }
 
         return true;
     }
@@ -46,6 +67,8 @@ namespace Engine {
     bool Application::Shutdown()
     {
         LOG_INFO("Shutting down application");
+
+        GameSpecificShutdown();
 
         m_RenderSystem->Shutdown();
         m_RenderSystem.reset();
@@ -56,6 +79,7 @@ namespace Engine {
     int Application::Run()
     {
         m_Running = true;
+        static auto previousFrameTime = SDL_GetPerformanceCounter();
 
         // Main loop
         SDL_Event event{ };
@@ -69,8 +93,14 @@ namespace Engine {
                 }
             }
 
-            float argumentForUpdate = 1.0f; // TODO: Remove
-            Update(argumentForUpdate);
+            auto frameTime = SDL_GetPerformanceCounter();
+
+            float deltaTime = (frameTime - previousFrameTime) / static_cast<float>(SDL_GetPerformanceFrequency());
+
+            LOG_CRITICAL("Current FPS: {}", 1.f / deltaTime);
+            Update(deltaTime);
+
+            previousFrameTime = frameTime;
         }
 
         m_Running = false;
@@ -81,13 +111,12 @@ namespace Engine {
     void Application::Update(float dt)
     {
         // Update all systems
-        m_RenderSystem->Update(dt);
-        m_InputManager->Update(dt);
-    }
+        m_InputManager->Update(dt, m_EntityManager.get());
+        m_PhysicsSystem->Update(dt, m_EntityManager.get());
+        m_EntityManager->Update(dt);
+        m_RenderSystem->Update(dt, m_EntityManager.get());
 
-    Engine::Application* CreateApplication()
-    {
-        return new Engine::Application();
+        GameSpecificUpdate(dt);
     }
 
 }

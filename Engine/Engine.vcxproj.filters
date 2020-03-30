@@ -52,11 +52,11 @@
     <Filter Include="extern\glm\simd">
       <UniqueIdentifier>{20f5680c-5611-4dc6-927e-8ef7235f3c0c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\PhysicsSystem">
+      <UniqueIdentifier>{052e6dc8-81a8-4292-8613-324c90345e5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Core\main.cpp">
-      <Filter>src\Core</Filter>
-    </ClCompile>
     <ClCompile Include="src\Logger\Logger.cpp">
       <Filter>src\Logger</Filter>
     </ClCompile>
@@ -89,6 +89,15 @@
     </ClCompile>
     <ClCompile Include="src\ECS\Entity.cpp">
       <Filter>src\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Render\TextureManager.cpp">
+      <Filter>src\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\EntryPoint.h">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Physics\PhysicsSystem.cpp">
+      <Filter>src\PhysicsSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1030,6 +1039,15 @@
     </ClInclude>
     <ClInclude Include="extern\glm\simd\integer.h">
       <Filter>extern\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Render\TextureManager.h">
+      <Filter>src\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Physics\PhysicsSystem.h">
+      <Filter>src\PhysicsSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

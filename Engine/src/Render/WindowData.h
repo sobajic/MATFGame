@@ -11,5 +11,6 @@ namespace Engine
         std::string m_Title{ "UBISOFT MATF KURS - Default Name" };
         int m_Width{ DEFAULT_WIDTH };
         int m_Height{ DEFAULT_HEIGHT };
+        bool m_Vsync{ false };
     };
 }

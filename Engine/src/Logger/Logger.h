@@ -15,6 +15,9 @@ namespace Engine {
         inline static externLogger_t& GetLogger() { return *ms_Logger; }
     private:
         inline static std::unique_ptr<externLogger_t> ms_Logger;
+
+        Logger(const Logger& other) = delete;
+        Logger& operator=(Logger& other) = delete;
     };
 }
 

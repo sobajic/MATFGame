@@ -1,6 +1,8 @@
 #include "precomp.h"
 #include "InputManager.h"
 
+#include "ECS/EntityManager.h"
+
 namespace Engine
 {
     bool KeyDown(KeyboardButton _iKey)
@@ -49,11 +51,20 @@ namespace Engine
         }
     }
 
-    void InputManager::Update(float dt)
+    void InputManager::Update(float dt, EntityManager* entityManager)
     {
         ProcessInput();
 
         // Update entities
+        auto inputComponents = entityManager->GetAllComponentInstances<InputComponent>();
+
+        for (auto component : inputComponents)
+        {
+            for (auto& action : component->inputActions)
+            {
+                action.m_Active = IsButtonActionActive(action.m_Action, action.m_ActionTriggerState);
+            }
+        }
     }
 
     void InputManager::Shutdown()
@@ -81,6 +92,10 @@ namespace Engine
         m_InputActions[EInputAction::PlayerMoveRight] = VK_RIGHT;
         m_InputActions[EInputAction::PauseGame] = VK_ESCAPE;
         m_InputActions[EInputAction::RestartGame] = 'R';
+        m_InputActions[EInputAction::PanCameraUp] = 'W';
+        m_InputActions[EInputAction::PanCameraLeft] = 'A';
+        m_InputActions[EInputAction::PanCameraDown] = 'S';
+        m_InputActions[EInputAction::PanCameraRight] = 'D';
     }
 
 }

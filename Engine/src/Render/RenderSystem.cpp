@@ -2,6 +2,7 @@
 #include "RenderSystem.h"
 #include "Render/Renderer.h"
 #include "Render/Window.h"
+#include "ECS/EntityManager.h"
 
 #include <SDL.h>
 #include <SDL_Image.h>
@@ -48,20 +49,37 @@ namespace Engine
         return true;
     }
 
-    void RenderSystem::Update(float dt_/*, EntityManager* entityManager*/)
+    void RenderSystem::Update(float dt_, EntityManager* entityManager)
     {
-        // LOG_INFO("RenderSystem::Update"); TODO: Uncomment
-
         m_Renderer->BeginScene();
 
-        // Find all images to draw
+        // Get the main camera from the entity manager
+        // TODO: Support multiple cameras and switching between them
+        auto cameras = entityManager->GetAllEntitiesWithComponents<CameraComponent, TransformComponent>();
+        ASSERT(!cameras.empty(), "Must have at least one camera");
 
-        // Draw every image
-        do
-        {
-            m_Renderer->DrawImage();
-        } while (false);
+        auto camera = *(cameras.begin());
+
+        // Find all entities to draw
+        auto renderables = entityManager->GetAllEntitiesWithComponents<TransformComponent, SpriteComponent>();
+        m_Renderer->DrawEntities(renderables, camera);
 
         m_Renderer->EndScene();
     }
+
+    Renderer* RenderSystem::GetRenderer()
+    {
+        return m_Renderer.get();
+    }
+
+    void RenderSystem::SetBackgroundColor(unsigned char bgR_, unsigned char bgG_, unsigned char bgB_, unsigned char bgA_)
+    {
+        m_Renderer->SetBackgroundColor(bgR_, bgG_, bgB_, bgA_);
+    }
+
+    void RenderSystem::SetBackgroundColor(const Color& col_)
+    {
+        m_Renderer->SetBackgroundColor(col_);
+    }
+
 }

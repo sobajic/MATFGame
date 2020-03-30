@@ -61,10 +61,14 @@ namespace Engine
             return returnVec;
         }
 
+        EntityManager() = default;
     private:
         using EntityList = std::vector<std::unique_ptr<Entity>>;
 
         EntityList m_Entities;
+
+        EntityManager(const EntityManager& other) = delete;
+        EntityManager& operator=(EntityManager& other) = delete;
     };
 
 }

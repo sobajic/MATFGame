@@ -44,6 +44,8 @@ namespace Engine {
     {
         EInputAction m_Action{ EInputAction::InputActionCount };
         EInputActionState m_ActionTriggerState{ EInputActionState::Pressed };
-        bool m_Active{};
+        bool m_Active{ false };
+
+        InputAction(EInputAction action_, EInputActionState activeState_ = EInputActionState::Pressed) : m_Action(action_), m_ActionTriggerState(activeState_) { }
     };
 }
