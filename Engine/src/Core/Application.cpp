@@ -14,6 +14,9 @@
 
 namespace Engine {
 
+    Application::~Application() = default;
+
+
     bool Application::Init()
     {
         LOG_INFO("Initializing application");
@@ -79,7 +82,7 @@ namespace Engine {
     int Application::Run()
     {
         m_Running = true;
-        static auto previousFrameTime = SDL_GetPerformanceCounter();
+        auto previousFrameTime = SDL_GetPerformanceCounter();
 
         // Main loop
         SDL_Event event{ };
@@ -97,7 +100,7 @@ namespace Engine {
 
             float deltaTime = (frameTime - previousFrameTime) / static_cast<float>(SDL_GetPerformanceFrequency());
 
-            LOG_CRITICAL("Current FPS: {}", 1.f / deltaTime);
+            LOG_INFO("Current FPS: {}", 1.f / deltaTime);
             Update(deltaTime);
 
             previousFrameTime = frameTime;

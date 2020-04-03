@@ -12,6 +12,7 @@
 #include <string>
 #include <array>
 #include <vector>
+#include <set>
 
 #include "Logger/Logger.h"
 

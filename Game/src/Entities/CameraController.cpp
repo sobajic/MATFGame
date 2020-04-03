@@ -20,27 +20,14 @@ namespace Game
 
         auto inputComp = camera->GetComponent<Engine::InputComponent>();
 
-        inputComp->inputActions.push_back({ Engine::EInputAction::PanCameraRight });
-        inputComp->inputActions.push_back({ Engine::EInputAction::PanCameraUp });
-        inputComp->inputActions.push_back({ Engine::EInputAction::PanCameraDown });
-        inputComp->inputActions.push_back({ Engine::EInputAction::PanCameraLeft });
+        inputComp->inputActions.push_back({ "PanCameraUp" });
+        inputComp->inputActions.push_back({ "PanCameraDown" });
+        inputComp->inputActions.push_back({ "PanCameraRight" });
+        inputComp->inputActions.push_back({ "PanCameraLeft" });
 
         entityManager_->AddEntity(std::move(camera));
 
         return !(entityManager_->GetAllEntitiesWithComponent<Engine::CameraComponent>().empty());
-    }
-
-    bool IsActionActive(Engine::InputComponent* inputComponent, Engine::EInputAction targetAction)
-    {
-        auto found = std::find_if(
-            std::begin(inputComponent->inputActions),
-            std::end(inputComponent->inputActions),
-            [targetAction](Engine::InputAction e)
-            {
-                return e.m_Action == targetAction && e.m_Active == true;
-            });
-
-        return found != std::end(inputComponent->inputActions);
     }
 
     void CameraController::Update(float dt, Engine::EntityManager* entityManager_)
@@ -53,13 +40,13 @@ namespace Game
             auto input = entity->GetComponent<Engine::InputComponent>();
             auto speed = entity->GetComponent<Engine::CameraComponent>()->m_PanSpeed;
 
-            bool moveUpInput = IsActionActive(input, Engine::EInputAction::PanCameraUp);
-            bool moveDownInput = IsActionActive(input, Engine::EInputAction::PanCameraDown);
-            bool moveLeftInput = IsActionActive(input, Engine::EInputAction::PanCameraLeft);
-            bool moveRightInput = IsActionActive(input, Engine::EInputAction::PanCameraRight);
+            bool moveUpInput = Engine::InputManager::IsActionActive(input, "PanCameraUp");
+            bool moveDownInput = Engine::InputManager::IsActionActive(input, "PanCameraDown");
+            bool moveLeftInput = Engine::InputManager::IsActionActive(input, "PanCameraLeft");
+            bool moveRightInput = Engine::InputManager::IsActionActive(input, "PanCameraRight");
 
-            move->m_TranslationSpeed.x = speed * (moveLeftInput ? -1.0f : 0.0f + moveRightInput ? 1.0f : 0.0f);
-            move->m_TranslationSpeed.y = speed * (moveUpInput ? -1.0f : 0.0f + moveDownInput ? 1.0f : 0.0f);
+            move->m_TranslationSpeed.x = speed * ((moveLeftInput ? -1.0f : 0.0f) + (moveRightInput ? 1.0f : 0.0f));
+            move->m_TranslationSpeed.y = speed * ((moveUpInput ? -1.0f : 0.0f) + (moveDownInput ? 1.0f : 0.0f));
         }
     }
 }

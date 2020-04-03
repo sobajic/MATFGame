@@ -6,6 +6,7 @@ using KeyboardButton = int;
 namespace Engine
 {
     class EntityManager;
+    struct InputComponent;
 
     class InputManager
     {
@@ -13,6 +14,8 @@ namespace Engine
         bool Init();
         void Update(float dt, EntityManager* entityManager);
         void Shutdown();
+
+        static bool IsActionActive(InputComponent* inputComponent, EInputAction targetAction);
 
         InputManager() = default;
 

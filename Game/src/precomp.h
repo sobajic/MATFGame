@@ -9,6 +9,7 @@
 #include <string>
 #include <array>
 #include <vector>
+#include <set>
 
 #include <glm/glm.hpp>
 #include <glm/gtx/norm.hpp>

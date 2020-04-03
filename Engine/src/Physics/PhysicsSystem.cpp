@@ -42,8 +42,7 @@ namespace Engine
 
                 if (collided)
                 {
-                    entity1->GetComponent<CollisionComponent>()->m_CollidedWith.push_back(entity2);
-                    entity2->GetComponent<CollisionComponent>()->m_CollidedWith.push_back(entity1);
+                    entity1->GetComponent<CollisionComponent>()->m_CollidedWith.insert(entity2);
                 }
             }
         }
@@ -74,11 +73,11 @@ namespace Engine
         }
         else if (collider1->m_Shape == ECollisionShape::AABox && collider2->m_Shape == ECollisionShape::AABox)
         {
-            bool collisionX = transform1->m_Position.x + collider1->m_Size.x >= transform2->m_Position.x &&
-                                transform2->m_Position.x + collider2->m_Size.x >= transform1->m_Position.x;
+            bool collisionX = transform1->m_Position.x + collider1->m_Size.x / 2.f >= transform2->m_Position.x - collider2->m_Size.x / 2.f &&
+                                transform2->m_Position.x + collider2->m_Size.x / 2.f >= transform1->m_Position.x - collider1->m_Size.x / 2.f;
 
-            bool collisionY = transform1->m_Position.y + collider1->m_Size.y >= transform2->m_Position.y &&
-                                transform2->m_Position.y + collider2->m_Size.y >= transform1->m_Position.y;
+            bool collisionY = transform1->m_Position.y + collider1->m_Size.y / 2.f >= transform2->m_Position.y - collider2->m_Size.y / 2.f &&
+                                transform2->m_Position.y + collider2->m_Size.y / 2.f >= transform1->m_Position.y - collider1->m_Size.y / 2.f;
 
             return collisionX && collisionY;
         }

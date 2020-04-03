@@ -17,7 +17,7 @@ namespace Engine {
         int Run();
         bool Shutdown();
 
-        virtual ~Application() = default;
+        virtual ~Application();
         Application() = default;
 
     protected:

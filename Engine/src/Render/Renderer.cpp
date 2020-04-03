@@ -103,6 +103,23 @@ namespace Engine
                 transform->m_Rotation,
                 NULL,
                 flip);
+
+#ifdef _DEBUG
+            // DebugDraw
+            SDL_SetRenderDrawColor(m_NativeRenderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
+
+            SDL_RenderDrawPoint(m_NativeRenderer, (int)screenPosition.x, (int)screenPosition.y);
+
+            if (auto collider = r->GetComponent<CollisionComponent>())
+            {
+                SDL_SetRenderDrawColor(m_NativeRenderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
+                dst = { (int)(screenPosition.x - collider->m_Size.x / 2), (int)(screenPosition.y - collider->m_Size.y / 2), (int)collider->m_Size.x, (int)collider->m_Size.y };
+                SDL_RenderDrawRect(m_NativeRenderer, &dst);
+
+            }
+            
+            SetBackgroundColor(m_BackgroundColor);
+#endif
         }
     }
 

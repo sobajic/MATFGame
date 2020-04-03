@@ -16,11 +16,4 @@ namespace Engine {
         Texture(Renderer* renderer_, std::string path_);
         ~Texture();
     };
-
-    static std::unique_ptr<Texture> CreateTextureFromFilename(Renderer* renderer_, std::string path_)
-    {
-        auto texture = std::make_unique<Texture>();
-        texture->LoadTexture(renderer_, path_);
-        return texture;
-    }
 }

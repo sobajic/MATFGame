@@ -10,7 +10,7 @@ namespace Game
         ASSERT(entityManager_ != nullptr, "Must pass valid pointer to entitymanager to CameraController::Init()");
 
         auto imageEntity = std::make_unique<Engine::Entity>();
-        imageEntity->AddComponent<Engine::TransformComponent>(100.f, 100.f, 200.f, 200.f);
+        imageEntity->AddComponent<Engine::TransformComponent>(0.f, 0.f, 10.f, 10.f);
         imageEntity->AddComponent<Engine::SpriteComponent>().m_Image = texture_;
 
         entityManager_->AddEntity(std::move(imageEntity));

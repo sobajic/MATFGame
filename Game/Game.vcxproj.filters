@@ -24,6 +24,18 @@
     <ClInclude Include="src\Entities\StaticImage.h">
       <Filter>src\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="src\Entities\PlayerController.h">
+      <Filter>src\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entities\BallController.h">
+      <Filter>src\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entities\GameComponents.h">
+      <Filter>src\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entities\StadiumController.h">
+      <Filter>src\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\precomp.cpp">
@@ -36,6 +48,15 @@
       <Filter>src\Entities</Filter>
     </ClCompile>
     <ClCompile Include="src\Entities\StaticImage.cpp">
+      <Filter>src\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entities\PlayerController.cpp">
+      <Filter>src\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entities\BallController.cpp">
+      <Filter>src\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entities\StadiumController.cpp">
       <Filter>src\Entities</Filter>
     </ClCompile>
   </ItemGroup>

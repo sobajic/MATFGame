@@ -75,27 +75,41 @@ namespace Engine
 
     bool InputManager::IsButtonActionActive(EInputAction _eAction, EInputActionState _eState) const
     {
-        ASSERT(m_InputActionStates.find(_eAction) != m_InputActionStates.end(), "Unknown input action");
+        ASSERT(m_InputActionStates.find(_eAction) != m_InputActionStates.end(), "Unknown input action: {}", _eAction);
         return m_InputActionStates.at(_eAction) == _eState;
     }
 
     void InputManager::InitKeybinds()
     {
         m_InputActionStates.clear();
-        m_InputActionStates.reserve(static_cast<size_t>(EInputAction::InputActionCount));
         m_InputActions.clear();
-        m_InputActions.reserve(static_cast<size_t>(EInputAction::InputActionCount));
 
-        m_InputActions[EInputAction::PlayerMoveUp] = VK_UP;
-        m_InputActions[EInputAction::PlayerMoveLeft] = VK_LEFT;
-        m_InputActions[EInputAction::PlayerMoveDown] = VK_DOWN;
-        m_InputActions[EInputAction::PlayerMoveRight] = VK_RIGHT;
-        m_InputActions[EInputAction::PauseGame] = VK_ESCAPE;
-        m_InputActions[EInputAction::RestartGame] = 'R';
-        m_InputActions[EInputAction::PanCameraUp] = 'W';
-        m_InputActions[EInputAction::PanCameraLeft] = 'A';
-        m_InputActions[EInputAction::PanCameraDown] = 'S';
-        m_InputActions[EInputAction::PanCameraRight] = 'D';
+        m_InputActions["Player1MoveUp"] = VK_UP;
+        m_InputActions["Player1MoveLeft"] = VK_LEFT;
+        m_InputActions["Player1MoveDown"] = VK_DOWN;
+        m_InputActions["Player1MoveRight"] = VK_RIGHT;
+        m_InputActions["PauseGame"] = VK_ESCAPE;
+        m_InputActions["RestartGame"] = 'R';
+        m_InputActions["Player2MoveUp"] = 'W';
+        m_InputActions["Player2MoveLeft"] = 'A';
+        m_InputActions["Player2MoveDown"] = 'S';
+        m_InputActions["Player2MoveRight"] = 'D';
+        m_InputActions["PanCameraUp"] = 'Y';
+        m_InputActions["PanCameraLeft"] = 'Y';
+        m_InputActions["PanCameraDown"] = 'Y';
+        m_InputActions["PanCameraRight"] = 'Y';
     }
 
+    bool InputManager::IsActionActive(InputComponent* inputComponent, EInputAction targetAction)
+    {
+        auto found = std::find_if(
+            std::begin(inputComponent->inputActions),
+            std::end(inputComponent->inputActions),
+            [targetAction](Engine::InputAction e)
+        {
+            return e.m_Action == targetAction && e.m_Active == true;
+        });
+
+        return found != std::end(inputComponent->inputActions);
+    }
 }

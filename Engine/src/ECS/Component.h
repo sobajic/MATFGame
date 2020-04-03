@@ -60,9 +60,9 @@ namespace Engine
 
     struct CollisionComponent : public Component
     {
-        ECollisionShape m_Shape{ ECollisionShape::Circle };
         vec2 m_Size{}; // only using first element for circle
-        std::vector<Entity*> m_CollidedWith{};
+        ECollisionShape m_Shape{ ECollisionShape::Circle };
+        std::set<Entity*> m_CollidedWith{};
 
         CollisionComponent() = default;
         CollisionComponent(float radius) : m_Size(radius) {}

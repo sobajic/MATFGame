@@ -5,7 +5,7 @@
 #include "ECS/EntityManager.h"
 
 #include <SDL.h>
-#include <SDL_Image.h>
+#include <SDL_image.h>
 
 namespace Engine
 {
