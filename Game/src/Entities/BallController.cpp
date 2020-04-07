@@ -21,10 +21,6 @@ namespace Game
         ASSERT(entityManager_ != nullptr, "Must pass valid pointer to entitymanager to BallController::Init()");
         ASSERT(texture_ != nullptr, "Must pass valid pointer to texture to BallController::Init()");
 
-        std::random_device rd;
-        std::uniform_int_distribution<int> spd(100, 250);
-        std::discrete_distribution<> direction({ 50, 0, 50 });
-
         auto ball = std::make_unique<Engine::Entity>();
 
         ball->AddComponent<BallComponent>();

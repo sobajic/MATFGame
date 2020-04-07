@@ -39,7 +39,7 @@ namespace Game
         {
             auto move = entity->GetComponent<Engine::MoverComponent>();
             auto input = entity->GetComponent<Engine::InputComponent>();
-            auto speed = 200.f; // entity->GetComponent<Engine::PlayerComponent>()->m_PanSpeed;
+            auto speed = entity->GetComponent<Engine::PlayerComponent>()->m_PanSpeed;
 
             bool moveUpInput = Engine::InputManager::IsActionActive(input, fmt::format("Player{}MoveUp", i));
             bool moveDownInput = Engine::InputManager::IsActionActive(input, fmt::format("Player{}MoveDown", i));
