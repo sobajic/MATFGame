@@ -1,0 +1,18 @@
+[submodule "Projekti/FlappyBird_UbisoftProject-Game"]
+	path = Projekti/FlappyBird_UbisoftProject-Game
+	url = https://github.com/Mateja97/UbisoftProject-Game
+[submodule "Projekti/matf-flappy"]
+	path = Projekti/matf-flappy
+	url = https://github.com/popovic-olivera/matf-flappy
+[submodule "Projekti/Nitro"]
+	path = Projekti/Nitro
+	url = https://github.com/spaske00/Nitro
+[submodule "Projekti/Paint-the-town-crimson"]
+	path = Projekti/Paint-the-town-crimson
+	url = https://github.com/PetarZecevic97/Paint-the-town-crimson
+[submodule "Projekti/SnakeGame"]
+	path = Projekti/SnakeGame
+	url = https://github.com/djordjetane/SnakeGame
+[submodule "Projekti/RealSteel"]
+	path = Projekti/RealSteel
+	url = https://github.com/dekanac/RealSteel
